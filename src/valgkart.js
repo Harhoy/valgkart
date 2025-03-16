@@ -19,7 +19,7 @@ class ElectoralChart {
     this.parties = parties;
 
     //Initial distance from center in graph to first row
-    this.radialDistance = 50;
+    this.radialDistance = 100;
 
     //Total number of nodes to allocate
     if (parties != null) {
@@ -28,6 +28,9 @@ class ElectoralChart {
     } else {
       this.totalNodes = 100;
     }
+
+    //Counting the number of nodes
+    this.nodeCounter = 0;
 
     //Radius of each node
     this.nodeRadius = 10;
@@ -54,9 +57,32 @@ class ElectoralChart {
     //Resetting
     this.totalNodes = 0;
 
+    this.partyBracket = [];
+
+    this.partyInfo = {}
+
+    let from = null;
+    let to = null;
+
     for (let i = 0; i < this.parties.length; i++){
+
+      this.partyInfo[this.parties[i]['Name']] = {'Mandater': this.parties[i]['Mandater'], 'HEX': this.parties[i]['HEX']};
+
+      from =  this.totalNodes + 1;
       this.totalNodes += this.parties[i]['Mandater'];
+      to = this.totalNodes;
+
+      if (i == 0) {from -= 1;}
+
+      for (let j = from; j <= to; j++){
+          this.partyBracket.push(this.parties[i]['Name']);
+      }
+
+
     }
+
+    //console.log("pb",this.partyBracket);
+    //console.log(this.partyInfo);
 
   }
 
@@ -87,7 +113,7 @@ class ElectoralChart {
     let minDistance = this.radialDistance;
 
     //Hard coded max value (based on tests)
-    let radialDistanceMax = 400;
+    let radialDistanceMax = 150;
 
     //Checking for each value (line search)
     while (this.radialDistance < radialDistanceMax) {
@@ -120,6 +146,7 @@ class ElectoralChart {
     this.gap = 5;
     this.rows = [];
     this.gapList = [];
+    this.nodeCounter = 0;
   }
 
   //Drawing all rows and nodes
@@ -137,7 +164,7 @@ class ElectoralChart {
       let newRow = new Row(this, radialDistance);
 
       //Filling it with nodes
-      newRow.setup();
+      newRow.setup(this.rows.length);
 
       //Updating distance to next row
       radialDistance += 2 * this.nodeRadius + this.gap;
@@ -170,11 +197,12 @@ class Row {
     //Distance from centerpoint to row
     this.radialDistance = radialDistance;
 
+    //nodes in row
     this.nodes = [];
 
   }
 
-  setup() {
+  setup(number) {
 
     //Intial guess of nodes that will fit within layer
     let nodesLocal = Math.floor(1 + (this.radialDistance * PI) / (2 * this.graph.nodeRadius + this.graph.gap));
@@ -202,8 +230,12 @@ class Row {
 
       //Looping through the number of nodes
       for (let i = 0; i < nodesLocal; i++) {
-        this.addNode();
+        this.graph.nodeCounter += 1
+        this.addNode(this.graph.nodeCounter);
         this.angle -= this.angleIncrement; //moving counter clockwise
+
+        //console.log(this.angle);
+
       }
     }
   }
@@ -215,7 +247,7 @@ class Row {
     }
   }
 
-  addNode() {
+  addNode(number) {
 
     //calculate new angle to (relative to parent)
     let newAngle = this.angle;
@@ -225,7 +257,12 @@ class Row {
     let newY = this.graph.rootNode.y + this.radialDistance * Math.cos(newAngle);
 
     //Create new node
-    let newNode = new Node(this.graph, newX, newY);
+    let newNode = new Node(this.graph, newX, newY, number);
+
+    //Id of current row
+    newNode.row = number;
+
+    newNode.angle = PI * 3/2 - newAngle;
 
     //Adding to list of nodes
     this.nodes.push(newNode);
@@ -237,19 +274,29 @@ class Row {
 
 class Node {
 
-  constructor(chart, x, y) {
+  constructor(graph, x, y, id) {
 
-    this.chart = chart;
+    //ID of row
+    this.row = null;
 
-    this.color = "blue";
+    //Local ID in row
+    this.id = id;
+
+    //Electoral chart
+    this.graph = graph;
 
     this.x = x;
-
     this.y = y;
 
   }
 
   draw() {
-    drawNode(this.chart.ctx, this, this.chart.nodeRadius, this.color);
+
+    console.log(leftRight(this.angle), this.angle);
+
+
+    this.color = 'rgba(0, ' + leftRight(this.angle)*255 + ',0,1)';
+
+    drawNode(this.graph.ctx, this, this.graph.nodeRadius, this.color);
   }
 }

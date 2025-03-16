@@ -5,15 +5,15 @@ canvas.height = "650";
 
 
 
-let parties = [{'Name': 'Arbeiderpartiet', 'Mandater': 50, 'HEX': '#eb4034'},
-              {'Name': 'Høyre', 'Mandater': 50, 'HEX': '#eb4034'},
-              {'Name': 'FrP', 'Mandater': 69, 'HEX': '#5f34eb'}];
+let parties = [{'Name': 'Arbeiderpartiet', 'Mandater': 1, 'HEX': '#eb4034'},
+              {'Name': 'Høyre', 'Mandater': 1, 'HEX': '#eb4034'},
+              {'Name': 'FrP', 'Mandater': 400, 'HEX': '#5f34eb'}];
 
 let graph = new ElectoralChart(ctx, canvas, parties);
 
-//console.log(graph.setup());
-graph.adapt();
+console.log(graph.setup());
+//graph.adapt();
 graph.drawRows();
 //console.log(graph.gapList);
 
-console.log(parties)
+//console.log(parties)

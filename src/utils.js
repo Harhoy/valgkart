@@ -32,6 +32,9 @@ function angleBaseNorth(a1, a2) {
   return Math.acos(angle(a1,a2));
 }
 
+function leftRight(angle) {
+  return (3/2 * PI - angle) / (3/2 * PI - 1/2 * PI);
+}
 
 function color(x,xMax){
 
@@ -61,5 +64,5 @@ function drawNode(ctx, p, radius, color){
   ctx.arc(x, y, radius, 0, 2 * Math.PI);
   ctx.fillStyle = color;
   ctx.fill();
-  ctx.stroke();
+  //ctx.stroke();
 }
