@@ -1,5 +1,5 @@
 
-
+var PI = 3.14;
 
 class ElectoralChart {
 
@@ -11,18 +11,20 @@ class ElectoralChart {
 
     //canvas
     this.canvas = canvas;
-    this.radialDistance = 10;
-    this.innerNodesCount = 5;
-    this.totalNodes = 5;
-    this.nodeRadius = 10;
-    this.gapFactor = 0.1;
+    this.radialDistance = 110;
+    this.innerNodesCount = 15;
+    this.totalNodes = 12;
+    this.nodeRadius = 5;
+    this.gap = 5;
+
     this.nodes = [];
     this.rows = [];
 
-    this.rootNode = new Node(this, rootX, rootY);
+    this.rootNode = new Node(this, this.canvas.width / 2, rootY);
+    this.rootNode.color = "red";
 
     if (this.innerNodesCount > 0) {
-      this.distance = 3.14 * this.radialDistance / (2 * this.nodeRadius * this.innerNodesCount * (1 + this.gapFactor));
+      //this.distance = PI * this.radialDistance / (2 * this.nodeRadius * this.innerNodesCount * (1 + this.gapFactor));
     } else {
       throw "Inner nodes count = 0"
     }
@@ -33,8 +35,8 @@ class ElectoralChart {
 
     let radialDistance = this.radialDistance;
 
+    this.rootNode.draw();
     //draw initial row
-    for (let i = 0; i < this.innerNodesCount; i++) {
 
       //Setting up a new row
       let newRow = new Row(this, radialDistance);
@@ -43,12 +45,14 @@ class ElectoralChart {
       newRow.setup();
 
       //Updating distance to next row
-      radialDistance += 2 * this.nodeRadius * (1 + this.gapFactor);
+      radialDistance += 2 * this.nodeRadius + this.gap;
 
       //Adding to rows
       this.rows.push(newRow);
 
-    }
+
+
+
   }
 
   draw() {
@@ -78,39 +82,36 @@ class Row {
 
   setup() {
 
-    //finding angle increment
-    this.angleIncrement = 3.14 / 180 * (180 / (3.14 * this.radialDistance / (2 * this.graph.nodeRadius * (1 + this.graph.gapFactor))));
+    //Intial guess of nodes that will fit within layer
+    let nodesLocal = Math.floor(1 + (this.radialDistance * PI) / (2 * this.graph.nodeRadius + this.graph.gap));
 
-    this.angle = 0;
+    //Adjust gapFactor to get a whole number given the number of nodes to place
+    let gUpdate = (this.radialDistance * PI) / (nodesLocal - 1)  -  2 * this.graph.nodeRadius;
 
-    this.addNode();
+    //Updating angle of increment (keeping PIs for reference)
+    this.angleIncrement = PI * (2 * this.graph.nodeRadius + gUpdate) / (this.radialDistance * PI) ;
+
+    //starting angle (270*)
+    this.angle = PI * 3/2;
+
+    //Looping through the number of nodes
+    for (let i = 0; i < nodesLocal; i++) {
+      this.addNode();
+      this.angle -= this.angleIncrement;
+    }
 
   }
 
 
   addNode() {
 
-
-    //parent x, y
-    let xP = this.graph.rootNode.x - this.graph.canvas.width / 2; //need to remove the "centering" in the canvas from the coordinates
-    let yP = this.graph.rootNode.y;
-    let el = length([xP, yP]);
-
-    //Normalize
-    xP = xP / el;
-    yP = yP / el;
-
-    //Get angle of parent
-    let angle = angleBaseNorth([0, 1],[xP, yP]);
-
     //calculate new angle to (relative to parent)
-    let newAngle = this.angle + this.angleIncrement;
+    let newAngle = this.angle;
 
     //New point
-    let newX = this.graph.rootNode.x + 2 * this.graph.nodeRadius * (1 + this.graph.gapFactor) * Math.sin(newAngle);
-    let newY = this.graph.rootNode.y + 2 * this.graph.nodeRadius * (1 + this.graph.gapFactor) * Math.cos(newAngle);
+    let newX = this.graph.rootNode.x + this.radialDistance * Math.sin(newAngle);
+    let newY = this.graph.rootNode.y + this.radialDistance * Math.cos(newAngle);
 
-    console.log(this.graph.rootNode.x, this.graph.nodeRadius,  (1 + this.graph.gapFactor),this.angle,this.angleIncrement);
 
     //Create new leaf
     let newNode = new Node(this.graph, newX, newY);
@@ -142,6 +143,6 @@ class Node {
   }
 
   draw() {
-    drawNode(this.chart.ctx, this, this.chart.nodeRadius, color);
+    drawNode(this.chart.ctx, this, this.chart.nodeRadius, this.color);
   }
 }

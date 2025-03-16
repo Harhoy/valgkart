@@ -4,6 +4,6 @@ canvas.width = "1000";
 canvas.height = "650";
 
 
-let graph = new ElectoralChart(ctx, canvas, 100, 100);
+let graph = new ElectoralChart(ctx, canvas, 100, 300);
 
 graph.setup();
