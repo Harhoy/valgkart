@@ -1,8 +1,18 @@
 
+/*
+---------------------------------------------
+This file contains different handy functions
+
+
+---------------------------------------------
+*/
+
+//Distance between two points
 function distance(p1, p2) {
   return ((p1.x  - p2.x) ** 2 + (p1.y - p2.y) ** 2) ** .5;
 }
 
+//Dot product between two vectors
 function dot(a1, a2) {
   var sum = 0;
   for (let i = 0; i < a1.length; i++) {
@@ -11,6 +21,7 @@ function dot(a1, a2) {
   return sum;
 }
 
+//Length of a single vector
 function length(a1) {
   var sum = 0;
   for (let i = 0; i < a1.length; i++) {
@@ -32,19 +43,12 @@ function angleBaseNorth(a1, a2) {
   return Math.acos(angle(a1,a2));
 }
 
+//Computes the percentage of distance between 90 and 270 degress for a given angle
 function leftRight(angle) {
   return (3/2 * PI - angle) / (3/2 * PI - 1/2 * PI);
 }
 
-function color(x,xMax){
-
-  let col1 = [0,0,0];
-  let col2 = [255,255,255];
-  let colOut = [];
-  let k = Math.min(1, x / xMax);
-
-}
-
+//Draws a line on a canvas from a context, two points and a width
 function drawLine(ctx, p1, p2, width) {
 
   ctx.beginPath();
@@ -56,7 +60,7 @@ function drawLine(ctx, p1, p2, width) {
   ctx.stroke();
 }
 
-
+//Draws a node on a canvas from a context, point (with x and y attributes), radius and color
 function drawNode(ctx, p, radius, color){
   ctx.beginPath();
   let x = p.x;
@@ -65,4 +69,53 @@ function drawNode(ctx, p, radius, color){
   ctx.fillStyle = color;
   ctx.fill();
   //ctx.stroke();
+}
+
+
+class PQ {
+
+  constructor () {
+    this.values = [];
+  }
+
+  //Gives minimim placement
+  insertMin(item, priority) {
+
+    //If it is placed within array
+    let placed = false;
+
+    //If empty
+    if (this.values.length == 0) {
+      this.values.push({'item': item, 'priority': priority});
+      return;
+    }
+
+    //Check for dominance
+    for (let i = 0; i < this.values.length; i++){
+      if (priority < this.values[i]['priority']) {
+        this.values.splice(i, 0, {'item': item, 'priority': priority});
+        placed = true;
+        break;
+      }
+    }
+
+    //At the end if not placed
+    if (!placed) {
+      this.values.push({'item': item, 'priority': priority});
+    }
+
+  }
+
+  //return first in list
+  pop() {
+    return this.values.shift();
+  }
+
+  empty(){
+    if (this.values.length == 0){
+      return true;
+    }
+    return false;
+  }
+
 }
