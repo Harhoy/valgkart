@@ -4,7 +4,7 @@
 
  1) Setup a canvas in HTML, for example:
 
- <canvas id="myCanvas"></canvas>
+ "<canvas id="myCanvas"></canvas>"
 
  2) Create a list of parties, starting from left to right on the political spectrum:
 
@@ -17,4 +17,4 @@
                {'Name': 'Høyre', 'Mandater': 35, 'HEX': '#325aa8'},
                {'Name': 'FrP', 'Mandater': 20, 'HEX': '#9b34eb'}];
 
-3) Create a ElectoralChart object, passing canvas ID tag ("myCanvas") and parties list
+3) Create an ElectoralChart object, passing canvas ID tag ("myCanvas") and parties list
