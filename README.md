@@ -18,3 +18,5 @@
                {'Name': 'FrP', 'Mandater': 20, 'HEX': '#9b34eb'}];
 
 3) Create an ElectoralChart object, passing canvas ID tag ("myCanvas") and parties list
+
+let graph = new ElectoralChart("myCanvas", parties);
