@@ -4,16 +4,20 @@
 var PI = 3.14;
 // --------------------
 
+/*
+const canvas = document.getElementById("myCanvas");
+const ctx = canvas.getContext("2d");
+*/
 
 class ElectoralChart {
 
-  constructor(ctx, canvas, parties = null) {
-
-    //Context to in which the illustrations are drawn
-    this.ctx = ctx;
+  constructor(canvasName, parties = null) {
 
     //canvas
-    this.canvas = canvas;
+    this.canvas = document.getElementById(canvasName);
+
+    //Context to in which the illustrations are drawn
+    this.ctx = canvas.getContext("2d");
 
     //Dict with party data
     this.parties = parties;
@@ -56,6 +60,9 @@ class ElectoralChart {
 
     //Nodes sorted from left to right (by angle to root node)
     this.sortedNodes = new PQ();
+
+    //Setup
+    this.adapt();
 
   }
 

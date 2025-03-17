@@ -3,18 +3,18 @@ const ctx = canvas.getContext("2d");
 canvas.width = "1000";
 canvas.height = "650";
 
-
-
 let parties = [{'Name': 'Rødt', 'Mandater': 9, 'HEX': '#6b1f28'},
               {'Name': 'SV', 'Mandater': 12, 'HEX': '#ba4c59'},
-              {'Name': 'Arbeiderpartiet', 'Mandater': 50, 'HEX': '#eb4034'},
-              {'Name': 'Høyre', 'Mandater': 50, 'HEX': '#325aa8'},
-              {'Name': 'FrP', 'Mandater': 69, 'HEX': '#9b34eb'}];
+              {'Name': 'MDG', 'Mandater': 3, 'HEX': '#4cba55'},
+              {'Name': 'Arbeiderpartiet', 'Mandater': 45, 'HEX': '#eb4034'},
+              {'Name': 'Venstre', 'Mandater': 9, 'HEX': '#4cbaa6'},
+              {'Name': 'Høyre', 'Mandater': 35, 'HEX': '#325aa8'},
+              {'Name': 'FrP', 'Mandater': 30, 'HEX': '#9b34eb'}];
 
-let graph = new ElectoralChart(ctx, canvas, parties);
+let graph = new ElectoralChart("myCanvas", parties);
 
 //console.log(graph.setup());
-graph.adapt();
+//graph.adapt();
 //graph.drawRows();
 //console.log(graph.gapList);
 
