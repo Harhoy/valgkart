@@ -37,9 +37,12 @@ The size of the canvas limits the scope of the drawing.
 
 # Algorithm
 
+## Context
 
 ![alt text](https://github.com/Harhoy/valgkart/blob/main/static/rootnode.png "EXAMPLE")
 
+
+## Single row construction
 
 Let $R$ be the distance from a node at the center of the chart, $n_k$ the number of dots in row $k$, $r$ the radius of the dots and $g$ the gap between each dot. We then have,
 
@@ -68,7 +71,10 @@ Now find the angle increment between the centroid of each dot:
 
 Project all points from center point.
 
+## Multiple row optimization
 
 ```math
 lr (\theta_i) = \frac{1}{ \pi}  * \bigg( \frac{3 \pi}{2} - \theta_i \bigg)  + d(r, o_i) * sm
 ```
+
+## Coloring
