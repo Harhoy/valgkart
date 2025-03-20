@@ -58,5 +58,5 @@ Solve for $n_k$ to get the number of dots that fit in each row, rounding it down
 
 
 ```math
-lr (\theta_i) = \frac{1}{ \pi}  * \bigg( (\frac{3 \pi}{2} - \theta_i) \bigg)  + d(r, o_i) * sm
+lr (\theta_i) = \frac{1}{ \pi}  * \bigg( \frac{3 \pi}{2} - \theta_i \bigg)  + d(r, o_i) * sm
 ```
