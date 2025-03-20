@@ -35,9 +35,14 @@ The size of the canvas limits the scope of the drawing.
 
 
 # Algorithm
-Let $R$ be the distance from a node at the center of the chart, $n_k$ the number of dots in row $k$, $r$ the radius of the dots and $g$ the gap between each dot.
+Let $R$ be the distance from a node at the center of the chart, $n_k$ the number of dots in row $k$, $r$ the radius of the dots and $g$ the gap between each dot. We then have,
 
 ```math
 R *\pi = (n-1)*(2 * r + g)
+```
 
+Solve for $n_k$ to get the number of dots that fit in each row, rounding it down to the nearest integer:
+
+```math
+n = floor\left{ 1+  1+\frac{R * \pi}\{2 * r + g} }\right
 ```
