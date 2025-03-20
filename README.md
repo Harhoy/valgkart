@@ -26,7 +26,7 @@ JS function for creating electoral maps.
 
 ```
 
-3) Create an ElectoralChart object, passing canvas ID tag ("myCanvas") and parties list
+3) Create an ElectoralChart object, passing the canvas ID tag ("myCanvas") and parties list
 
 ```javascript
 let graph = new ElectoralChart("myCanvas", parties);
@@ -36,6 +36,11 @@ The size of the canvas limits the scope of the drawing.
 
 
 # Algorithm
+
+
+![alt text](https://github.com/Harhoy/valgkart/blob/main/static/rootnode.png "EXAMPLE")
+
+
 Let $R$ be the distance from a node at the center of the chart, $n_k$ the number of dots in row $k$, $r$ the radius of the dots and $g$ the gap between each dot. We then have,
 
 ```math
