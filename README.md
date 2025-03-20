@@ -1,10 +1,14 @@
 # valgkart
  JS function for creating electoral maps
 
+# Setup
 
  1) Setup a canvas in HTML, for example:
 
+'''
  canvas id="myCanvas"></canvas
+
+'''
 
  2) Create a list of parties, starting from left to right on the political spectrum:
 
