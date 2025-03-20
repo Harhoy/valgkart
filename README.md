@@ -20,3 +20,6 @@
 3) Create an ElectoralChart object, passing canvas ID tag ("myCanvas") and parties list
 
 let graph = new ElectoralChart("myCanvas", parties);
+
+
+This sentence uses $\` and \`$ delimiters to show math inline: $`\sqrt{3x-1}+(1+x)^2`$

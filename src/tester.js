@@ -3,14 +3,14 @@ const ctx = canvas.getContext("2d");
 canvas.width = "1000";
 canvas.height = "650";
 
-let parties = [{'Name': 'Rødt', 'Mandater': 90, 'HEX': '#6b1f28'},
-              {'Name': 'SV', 'Mandater': 102, 'HEX': '#ba4c59'},
-              {'Name': 'MDG', 'Mandater': 30, 'HEX': '#4cba55'},
+let parties = [{'Name': 'Rødt', 'Mandater': 9, 'HEX': '#6b1f28'},
+              {'Name': 'SV', 'Mandater': 12, 'HEX': '#ba4c59'},
+              {'Name': 'MDG', 'Mandater': 2, 'HEX': '#4cba55'},
               {'Name': 'Arbeiderpartiet', 'Mandater': 45, 'HEX': '#eb4034'},
-              {'Name': 'KrF', 'Mandater': 10, 'HEX': '#f5f107'},
-              {'Name': 'Venstre', 'Mandater': 90, 'HEX': '#4cbaa6'},
-              {'Name': 'Høyre', 'Mandater': 35, 'HEX': '#325aa8'},
-              {'Name': 'FrP', 'Mandater': 20, 'HEX': '#9b34eb'}];
+              {'Name': 'KrF', 'Mandater': 4, 'HEX': '#f5f107'},
+              {'Name': 'Venstre', 'Mandater': 8, 'HEX': '#4cbaa6'},
+                {'Name': 'Høyre', 'Mandater': 60, 'HEX': '#325aa8'},
+              {'Name': 'FrP', 'Mandater': 5, 'HEX': '#9b34eb'}];
 
 let graph = new ElectoralChart("myCanvas", parties);
 

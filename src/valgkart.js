@@ -2,6 +2,11 @@
 // ---- CONSTANTS -----
 //PI
 var PI = 3.14;
+
+//Horizontal weight
+//Makes sure that dots on the same angle are ordered according to distance from root node
+var HORIZ_WEIGHT = 0.000000000001;
+
 // --------------------
 
 /*
@@ -300,7 +305,7 @@ class Row {
     this.nodes.push(newNode);
 
     //Inserting into PQ
-    this.graph.sortedNodes.insertMin(newNode, leftRight(newNode.angle));
+    this.graph.sortedNodes.insertMin(newNode, leftRight(newNode.angle) + distance(newNode, this.graph.rootNode) * HORIZ_WEIGHT);
 
   }
 
