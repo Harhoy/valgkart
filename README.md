@@ -84,4 +84,4 @@ w_i = \frac{1}{ \pi}  * \bigg( \frac{3 \pi}{2} - \theta_i \bigg)  + d_i * sm
 
 This assumes that each party should be ordered from 270 degrees ($3/2 \pi$) to 90 degress ($1/2 \pi$). The distance between the root node and the dot ($d_i$) is added and multiplied by a small number ($sm$). This ensures that the ordering from left to right is kept consistent on straight lines as well as from left to right.
 
-The color of each dot is kept in an array $C$ (sorted from left to right) and is matched to the $i$-th element in the queue. 
+The color of each dot is kept in an array $C$ (sorted from left to right). Each element,$C[i]$ is matched to the $i$-th element in the queue. 
