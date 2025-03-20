@@ -44,5 +44,9 @@ R *\pi = (n-1)*(2 * r + g)
 Solve for $n_k$ to get the number of dots that fit in each row, rounding it down to the nearest integer:
 
 ```math
-n = floor \left( 1+\frac{R * \pi}{2 * r + g} \right)
+\bar{n}_k = floor \left( 1+\frac{R * \pi}{2 * r + g} \right)
+```
+
+```math
+\bar{g}_k = \frac{\bar{n}_k-1}{R * \pi} - 2 * r 
 ```
