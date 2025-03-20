@@ -2,6 +2,8 @@
 
 JS function for creating electoral maps.
 
+![alt text](https://github.com/Harhoy/valgkart/blob/main/static/IMG.png "EXAMPLE")
+
 # Setup
 
  1) Setup a canvas in HTML, for example:
