@@ -50,9 +50,9 @@ Solve for $n_k$ to get the number of dots that fit in each row, rounding it down
 \bar{g}_k = \frac{\bar{n}_k-1}{R * \pi} - 2 * r
 ```
 
-```math
+$$\
 \Delta \theta = \frac{2 * r + \bar{g}_k}{R * \pi}
-```
+$$
 
 
 
