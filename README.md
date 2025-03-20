@@ -44,17 +44,22 @@ Solve for $n_k$ to get the number of dots that fit in each row, rounding it down
 
 ```math
 \bar{n}_k = floor \left( 1+\frac{R * \pi}{2 * r + g} \right)
+
 ```
+
+Solve for $\bar{g}_k$ to get the gap that places exactly $\bar{n}_k$ dots on the half dome:
 
 ```math
 \bar{g}_k = \frac{\bar{n}_k-1}{R * \pi} - 2 * r
 ```
 
-$$\
+Now find the angle increment between the centroid of each dot:
+
+```math
 \Delta \theta = \frac{2 * r + \bar{g}_k}{R * \pi}
-$$
+```
 
-
+Project all points from center point.
 
 
 ```math
