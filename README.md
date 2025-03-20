@@ -41,6 +41,7 @@ The size of the canvas limits the scope of the drawing.
 
 ![alt text](https://github.com/Harhoy/valgkart/blob/main/static/rootnode.png "EXAMPLE")
 
+The figure displays an example with the root node in the center.
 
 ## Single row construction
 
@@ -73,8 +74,12 @@ Project all points from center point.
 
 ## Multiple row optimization
 
+## Coloring
+
+Coloring assumes that parties are ordered from left to right on the political spectrum in the parties array. Each dot, $i$, is put into a (min) priority queue with the following weights:
+
 ```math
-lr (\theta_i) = \frac{1}{ \pi}  * \bigg( \frac{3 \pi}{2} - \theta_i \bigg)  + d(r, o_i) * sm
+w_i = \frac{1}{ \pi}  * \bigg( \frac{3 \pi}{2} - \theta_i \bigg)  + d_i * sm
 ```
 
-## Coloring
+This assumes that each party should be ordered from 270 degrees ($3/2 \pi$) to 90 degress ($1/2 \pi$). The distance between the root node and the dot ($d_i$) is added and multiplied by a small number ($sm$). This ensures that the ordering from left to right is kept consistent on straight lines as well as from left to right. 

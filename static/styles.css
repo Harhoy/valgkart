@@ -1,0 +1,22 @@
+
+
+#mainContainer {
+  margin-top: 10vh;
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 1px;
+  border-style: solid;
+  border-color: black;
+}
+
+#canvasContainer {
+
+  justify-content: center;
+}
+
+#sideContainer {
+  margin-top: 10vh;
+  justify-content: center;
+  display: grid;
+  grid-column: auto auto auto;
+}
