@@ -1,4 +1,15 @@
 
+/*
+
+Harald Høyem 23.03.2025
+ElectionChart
+
+please import "utils.js" in HTML before this script
+
+*/
+
+
+
 // ---- CONSTANTS -----
 //PI
 var PI = 3.14;
@@ -8,11 +19,6 @@ var PI = 3.14;
 var HORIZ_WEIGHT = 0.000000000001;
 
 // --------------------
-
-/*
-const canvas = document.getElementById("myCanvas");
-const ctx = canvas.getContext("2d");
-*/
 
 class ElectoralChart {
 
@@ -28,6 +34,9 @@ class ElectoralChart {
 
     //Dict with party data
     this.parties = parties;
+
+    //Radius of each node
+    this.nodeRadius = 10;
 
     //Initial distance from center in graph to first row
     this.radialDistance = 100;
@@ -45,9 +54,6 @@ class ElectoralChart {
 
     //Counting the number of nodes
     this.nodeCounter = 0;
-
-    //Radius of each node
-    this.nodeRadius = 10;
 
     //Counter for how many nodes are left to place
     this.leftToPlace = this.totalNodes;
@@ -95,16 +101,18 @@ class ElectoralChart {
       this.partyInfo[this.parties[i]['Name']] = {'Mandater': this.parties[i]['Mandater'], 'HEX': this.parties[i]['HEX']};
 
       //Create array with color information per seat
-      from =  this.totalNodes + 1;
+      from = this.totalNodes + 1;
       this.totalNodes += this.parties[i]['Mandater'];
       to = this.totalNodes;
 
       //Setting up color info in array
-      if (i == 0) {from -= 1;}
+      //if (i == 0) {from -= 1;}
       for (let j = from; j <= to; j++){
           this.partyBracket.push(this.parties[i]['HEX']);
       }
     }
+
+    //console.log(this.partyBracket);
   }
 
   //Function to compute the standard deviation of gap variance in each layer
