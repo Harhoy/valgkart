@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+
+<html lang ="en">
+  <head>
+
+    <meta charset = "UTF-8">
+    <meta name = "viewport" content ="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content ="ie=edge">
+    <link rel="stylesheet" href="static/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+ </head>
+
+ <body>
+
+   <div id="mainContainer">
+
+     <div class="header">
+       <h2> Stortingsgrafikk </h2>
+     </div>
+
+
+     <div id="canvasContainer">
+       <canvas id="myCanvas"></canvas>
+     </div>
+
+
+     <div class="buttonContainer">
+       <button id="calcBtn" type="button" class="btn btn-primary ">Lag figur!</button>
+       <button id="dwnldBtn" type="button" class="btn btn-info">Last ned figur!</button>
+     </div>
+
+     <div id="sideContainer">
+
+       <div class="partyItem">
+         <div class="partyName">
+           Rødt
+         </div>
+         <div class="input-group mb-3">
+           <input type="text" id="RødtInput" class="form-control" value=1  aria-describedby="basic-addon1">
+         </div>
+       </div>
+
+       <div class="partyItem">
+         <div class="partyName">
+           SV
+         </div>
+         <div class="input-group mb-3">
+           <input type="text" id="SVInput" class="form-control" value=1  aria-describedby="basic-addon1">
+         </div>
+       </div>
+
+       <div class="partyItem">
+         <div class="partyName">
+           MDG
+         </div>
+         <div class="input-group mb-3">
+           <input type="text" id="MDGInput" class="form-control" value=1  aria-describedby="basic-addon1">
+         </div>
+       </div>
+
+        <div class="partyItem">
+          <div class="partyName">
+            Arbeiderpartiet
+          </div>
+          <div class="input-group mb-3">
+            <input type="text" id="ArbeiderpartietInput" class="form-control" value=1  aria-describedby="basic-addon1">
+          </div>
+        </div>
+
+        <div class="partyItem">
+          <div class="partyName">
+            Senterpartiet
+          </div>
+          <div class="input-group mb-3">
+            <input type="text" id="SenterpartietInput" class="form-control" value=1  aria-describedby="basic-addon1">
+          </div>
+        </div>
+
+        <div class="partyItem">
+          <div class="partyName">
+            Høyre
+          </div>
+          <div class="input-group mb-3">
+            <input type="text" id="HøyreInput" class="form-control" value=1  aria-describedby="basic-addon1">
+          </div>
+        </div>
+
+        <div class="partyItem">
+          <div class="partyName">
+            KrF
+          </div>
+          <div class="input-group mb-3">
+            <input type="text" id="KrFInput" class="form-control" value=1  aria-describedby="basic-addon1">
+          </div>
+        </div>
+
+        <div class="partyItem">
+          <div class="partyName">
+            Venstre
+          </div>
+          <div class="input-group mb-3">
+            <input type="text" id="VenstreInput" class="form-control" value=1  aria-describedby="basic-addon1">
+          </div>
+        </div>
+
+        <div class="partyItem">
+          <div class="partyName">
+            FrP
+          </div>
+          <div class="input-group mb-3">
+            <input type="text" id="FrPInput" class="form-control" value=1  aria-describedby="basic-addon1">
+          </div>
+        </div>
+
+
+
+    </div>
+
+
+   </div>
+
+   <footer class="footer mt-auto py-3 bg-light">
+     <div class="containerFooter">
+       <span class="text-muted">Harald Høyem, 2025</span>
+     </div>
+   </footer>
+
+
+
+    <script src="src/utils.js"></script>
+    <script src="src/valgkart.js"></script>
+    <script src="src/valgfigur.js"></script>
+
+
+
+
+ </body>
+
+
+</html>

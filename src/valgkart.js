@@ -20,9 +20,11 @@ class ElectoralChart {
 
     //canvas
     this.canvas = document.getElementById(canvasName);
+    this.canvas.width = "600";
+    this.canvas.height = "350";
 
     //Context to in which the illustrations are drawn
-    this.ctx = canvas.getContext("2d");
+    this.ctx = this.canvas.getContext("2d");
 
     //Dict with party data
     this.parties = parties;
