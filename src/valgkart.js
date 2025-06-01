@@ -6,6 +6,8 @@ ElectionChart
 
 please import "utils.js" in HTML before this script
 
+update 01.05.2025: Added names and counts on the side (optional)
+
 */
 
 
