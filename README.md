@@ -35,7 +35,13 @@ let graph = new ElectoralChart("myCanvas", parties);
 ```
 
 The size of the canvas limits the scope of the drawing.
+If you wish to add counts and colors for each party, then add an argument "true"
 
+```javascript
+let graph = new ElectoralChart("myCanvas", parties, true);
+```
+
+Remark: The values that are used for placement are hard coded based on the Norwegian Parliament, and can be altered in the function "drawNames()".
 
 # Algorithm
 
