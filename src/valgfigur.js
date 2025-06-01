@@ -18,7 +18,7 @@ let parties = [{'Name': 'Rødt', 'Mandater': 9, 'HEX': '#6b1f20'},
               {'Name': 'FrP', 'Mandater': 5, 'HEX': '#9b34eb'}];
 
 //Graph
-let graph = new ElectoralChart("myCanvas", parties);
+let graph = new ElectoralChart("myCanvas", parties, true);
 
 const button = document.getElementById("calcBtn");
 button.addEventListener('click', () => updateGraph());
@@ -44,7 +44,7 @@ function updateGraph() {
     parties[i]['Mandater'] = parseInt(document.getElementById(parties[i]['Name'] + "Input").value);
   }
 
-  let newGraph = new ElectoralChart("myCanvas", parties);
+  let newGraph = new ElectoralChart("myCanvas", parties, true);
 
   console.log(parties);
 
